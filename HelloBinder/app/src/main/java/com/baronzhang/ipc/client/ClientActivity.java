@@ -51,7 +51,7 @@ public class ClientActivity extends AppCompatActivity {
                     book.setName("编码");
                     mIBookManager.addBook(book);
 
-                    Log.d("ClientActivity", mIBookManager.getBooks().toString());
+                    Log.d("kevin", mIBookManager.getBooks().toString());
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -64,7 +64,7 @@ public class ClientActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, RemoteService.class);
         intent.setAction("com.baronzhang.ipc.server");
-        Log.d("ClientActivity", "attemptToBindService");
+        Log.d("kevin", "ClientActivity#attemptToBindService");
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -72,16 +72,17 @@ public class ClientActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             isConnection = true;
-            Log.d("ClientActivity", "serviceConnection");
+            Log.d("kevin", "ClientActivity#onServiceConnected");
             mIBookManager = Stub.asInterface(service);
             if (mIBookManager != null) {
                 try {
                     List<Book> books = mIBookManager.getBooks();
-                    Log.d("ClientActivity", books.toString());
+                    Log.d("kevin", "ClientActivity#onServiceConnected#books="+books.toString());
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
+            Log.d("kevin", "ClientActivity#onServiceConnected end");
         }
 
         @Override
@@ -93,7 +94,7 @@ public class ClientActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ClientActivity", "onStart");
+        Log.d("kevin", "ClientActivity#onStart");
         if (!isConnection) {
             attemptToBindService();
         }

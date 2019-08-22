@@ -3,6 +3,7 @@ package com.baronzhang.ipc.proxy;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.baronzhang.ipc.Book;
 import com.baronzhang.ipc.server.IBookManager;
@@ -11,8 +12,7 @@ import com.baronzhang.ipc.server.Stub;
 import java.util.List;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
- *         05/01/2018
+ *
  */
 public class Proxy implements IBookManager {
 
@@ -21,7 +21,7 @@ public class Proxy implements IBookManager {
     private IBinder remote;
 
     public Proxy(IBinder remote) {
-
+        Log.d("kevin", "new Proxy class");
         this.remote = remote;
     }
 
@@ -34,6 +34,7 @@ public class Proxy implements IBookManager {
         Parcel data = Parcel.obtain();
         Parcel replay = Parcel.obtain();
         List<Book> result;
+        Log.d("kevin", "Proxy#getBooks");
 
         try {
             data.writeInterfaceToken(DESCRIPTOR);
@@ -44,6 +45,7 @@ public class Proxy implements IBookManager {
             replay.recycle();
             data.recycle();
         }
+        Log.d("kevin", "Proxy#getBooks end");
         return result;
     }
 
@@ -52,6 +54,7 @@ public class Proxy implements IBookManager {
 
         Parcel data = Parcel.obtain();
         Parcel replay = Parcel.obtain();
+        Log.d("kevin", "Proxy#addBook");
 
         try {
             data.writeInterfaceToken(DESCRIPTOR);
@@ -67,6 +70,7 @@ public class Proxy implements IBookManager {
             replay.recycle();
             data.recycle();
         }
+        Log.d("kevin", "Proxy#addBook");
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.baronzhang.ipc.Book;
 import com.baronzhang.ipc.proxy.Proxy;
@@ -36,6 +37,7 @@ public abstract class Stub extends Binder implements IBookManager {
         IInterface iin = binder.queryLocalInterface(DESCRIPTOR);
         if (iin != null && iin instanceof IBookManager)
             return (IBookManager) iin;
+        Log.d("kevin", "Stub#asInterface");
         return new Proxy(binder);
     }
 

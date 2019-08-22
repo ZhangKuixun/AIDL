@@ -19,13 +19,13 @@ public class RemoteService extends Service {
     private List<Book> books = new ArrayList<>();
 
     public RemoteService() {
-        Log.d("RemoteService", "RemoteService");
+        Log.d("kevin", "new RemoteService class");
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("RemoteService", "onCreate");
+        Log.d("kevin", "RemoteService#onCreate");
         Book book = new Book();
         book.setName("三体");
         book.setPrice(88);
@@ -34,7 +34,7 @@ public class RemoteService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("RemoteService", "onBind");
+        Log.d("kevin", "RemoteService#onBind");
         return bookManager;
     }
 
@@ -42,7 +42,7 @@ public class RemoteService extends Service {
         @Override
         public List<Book> getBooks() throws RemoteException {
             synchronized (this) {
-                Log.d("RemoteService", "getBooks");
+                Log.d("kevin", "RemoteService#Stub#getBooks");
                 if (books != null) {
                     return books;
                 }
@@ -53,7 +53,7 @@ public class RemoteService extends Service {
         @Override
         public void addBook(Book book) throws RemoteException {
             synchronized (this) {
-                Log.d("RemoteService", "addBook");
+                Log.d("kevin", "RemoteService#Stub#addBook");
                 if (books == null) {
                     books = new ArrayList<>();
                 }
@@ -64,7 +64,7 @@ public class RemoteService extends Service {
                 book.setPrice(book.getPrice() * 2);
                 books.add(book);
 
-                Log.e("RemoteService", "books: " + book.toString());
+                Log.e("kevin", "RemoteService#Stub#books=" + book.toString());
             }
         }
     };
