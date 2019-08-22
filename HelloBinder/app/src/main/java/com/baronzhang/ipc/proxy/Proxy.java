@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 
 import com.baronzhang.ipc.Book;
-import com.baronzhang.ipc.server.BookManager;
+import com.baronzhang.ipc.server.IBookManager;
 import com.baronzhang.ipc.server.Stub;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         05/01/2018
  */
-public class Proxy implements BookManager {
+public class Proxy implements IBookManager {
 
     private static final String DESCRIPTOR = "com.baronzhang.ipc.server.BookManager";
 

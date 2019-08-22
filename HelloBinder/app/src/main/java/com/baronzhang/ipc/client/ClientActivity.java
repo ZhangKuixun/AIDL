@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.baronzhang.ipc.Book;
 import com.baronzhang.ipc.R;
-import com.baronzhang.ipc.server.BookManager;
+import com.baronzhang.ipc.server.IBookManager;
 import com.baronzhang.ipc.server.RemoteService;
 import com.baronzhang.ipc.server.Stub;
 
@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class ClientActivity extends AppCompatActivity {
 
-    private BookManager bookManager;
+    private IBookManager mIBookManager;
     private boolean isConnection = false;
 
     @Override
@@ -42,16 +42,16 @@ public class ClientActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (bookManager == null)
+                if (mIBookManager == null)
                     return;
 
                 try {
                     Book book = new Book();
                     book.setPrice(101);
                     book.setName("编码");
-                    bookManager.addBook(book);
+                    mIBookManager.addBook(book);
 
-                    Log.d("ClientActivity", bookManager.getBooks().toString());
+                    Log.d("ClientActivity", mIBookManager.getBooks().toString());
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -73,10 +73,10 @@ public class ClientActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             isConnection = true;
             Log.d("ClientActivity", "serviceConnection");
-            bookManager = Stub.asInterface(service);
-            if (bookManager != null) {
+            mIBookManager = Stub.asInterface(service);
+            if (mIBookManager != null) {
                 try {
-                    List<Book> books = bookManager.getBooks();
+                    List<Book> books = mIBookManager.getBooks();
                     Log.d("ClientActivity", books.toString());
                 } catch (RemoteException e) {
                     e.printStackTrace();

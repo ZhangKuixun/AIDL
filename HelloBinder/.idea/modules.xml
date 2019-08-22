@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HelloBinder.iml" filepath="$PROJECT_DIR$/HelloBinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloBinder.iml" filepath="$PROJECT_DIR$/HelloBinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloBinder-master.iml" filepath="$PROJECT_DIR$/HelloBinder-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

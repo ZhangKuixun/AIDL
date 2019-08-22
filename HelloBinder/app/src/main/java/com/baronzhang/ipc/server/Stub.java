@@ -22,7 +22,7 @@ import java.util.List;
  * 这个类继承了 Binder, 说明它是一个 Binder 本地对象，它实现了 IInterface 接口，表明它具有 Server 承诺给 Client 的能力；
  * Stub 是一个抽象类，具体的 IInterface 的相关实现需要开发者自己实现。
  */
-public abstract class Stub extends Binder implements BookManager {
+public abstract class Stub extends Binder implements IBookManager {
 
     private static final String DESCRIPTOR = "com.baronzhang.ipc.server.BookManager";
 
@@ -30,12 +30,12 @@ public abstract class Stub extends Binder implements BookManager {
         this.attachInterface(this, DESCRIPTOR);
     }
 
-    public static BookManager asInterface(IBinder binder) {
+    public static IBookManager asInterface(IBinder binder) {
         if (binder == null)
             return null;
         IInterface iin = binder.queryLocalInterface(DESCRIPTOR);
-        if (iin != null && iin instanceof BookManager)
-            return (BookManager) iin;
+        if (iin != null && iin instanceof IBookManager)
+            return (IBookManager) iin;
         return new Proxy(binder);
     }
 

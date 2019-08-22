@@ -12,7 +12,7 @@ import java.util.List;
  * <p>
  * IInterface 代表的就是 Server 进程对象具备什么样的能力（能提供哪些方法，其实对应的就是 AIDL 文件中定义的接口）
  */
-public interface BookManager extends IInterface {
+public interface IBookManager extends IInterface {
 
     List<Book> getBooks() throws RemoteException;
 
