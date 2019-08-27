@@ -28,6 +28,7 @@ public abstract class Stub extends Binder implements IBookManager {
     private static final String DESCRIPTOR = "com.baronzhang.ipc.server.BookManager";
 
     public Stub() {
+        Log.d("kevin", "new Stub class");
         this.attachInterface(this, DESCRIPTOR);
     }
 

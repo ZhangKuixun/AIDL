@@ -69,15 +69,20 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
+        /**
+         * 服务绑定成功
+         * @param service 如果是同进程，这里返回的是RemoteService的匿名内部类Stub。
+         *                如果是不同的进程，这里返回的是Binderproxy。
+         */
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             isConnection = true;
-            Log.d("kevin", "ClientActivity#onServiceConnected");
-            mIBookManager = Stub.asInterface(service);
+            Log.d("kevin", "ClientActivity#onServiceConnected service:" + service);
+            mIBookManager = Stub.asInterface(service);//mIBookManager 得到的是 Proxy
             if (mIBookManager != null) {
                 try {
                     List<Book> books = mIBookManager.getBooks();
-                    Log.d("kevin", "ClientActivity#onServiceConnected#books="+books.toString());
+                    Log.d("kevin", "ClientActivity#onServiceConnected#books=" + books.toString());
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

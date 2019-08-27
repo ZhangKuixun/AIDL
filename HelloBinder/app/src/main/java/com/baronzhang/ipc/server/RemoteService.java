@@ -39,6 +39,7 @@ public class RemoteService extends Service {
     }
 
     private final Stub bookManager = new Stub() {
+
         @Override
         public List<Book> getBooks() throws RemoteException {
             synchronized (this) {
