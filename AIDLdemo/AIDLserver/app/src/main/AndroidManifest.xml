@@ -15,9 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.android.clark.aidl.BookManagerService"
-            android:exported="true"
-            android:enabled="true">
+        <service android:name="com.android.clark.aidl.BookManagerService">
+            <!--这两个属性可以不用写-->
+            <!--android:exported="true"-->
+            <!--android:enabled="true"-->
             <intent-filter>
                 <action android:name="com.android.clark.aidlserver.BookManagerService"/>
             </intent-filter>
